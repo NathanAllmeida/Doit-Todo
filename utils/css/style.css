@@ -1,0 +1,26 @@
+@font-face{
+	font-family: Earth Orbiter;
+	src: url('../fonts/earthorbiterxtrabold.ttf');
+}
+.navbar-p{
+	background-color: #3b19ff;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	margin-bottom: 2%;
+}
+#tit-nav{
+	font-family: Earth Orbiter;
+}
+.td-success{
+	color:green !important; 
+	text-decoration:line-through; 
+}
+#alert-success{
+	position: absolute;
+	float: right;
+	top:15%;	
+	z-index: 999;	
+}
+/*.dataTables_wrapper table thead{
+    display:none;
+}*/

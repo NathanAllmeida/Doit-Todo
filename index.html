@@ -1,0 +1,173 @@
+<!doctype html>
+<html> 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sistema Teste</title>
+    <meta name="description" content="To-do">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="utils/vendor/twbs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="utils/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="utils/vendor/twbs/bootstrap/dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="utils/vendor/datatables/datatables/media/css/datatables.bootstrap4.min.css">
+    <link rel="stylesheet" href="utils/vendor/datatables/datatables/media/css/jquery.datatables.css">
+    <link rel="stylesheet" href="utils/vendor/components/font-awesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="utils/css/style.css">
+
+    <script src="utils/vendor/components/jquery/jquery.js"></script>
+    <script src="utils/vendor/datatables/datatables/media/js/jquery.datatables.min.js"></script>
+    <script src="utils/vendor/datatables/datatables/media/js/datatables.bootstrap4.min.js"></script>
+    <script src="utils/vendor/drmonty/datatables-responsive/js/datatables.responsive.min.js"></script>
+    <script src="utils/vendor/drmonty/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="utils/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="utils/js/todo.script.js"></script>
+
+ 
+</head>
+<body>
+    <div class='container'>
+        <nav class='nav navbar-nav navbar-dark navbar-p'>          
+            <div class='row justify-content-center'>
+                <div class='pt-3 px-3'>
+                    <a class="navbar-brand" href="index_controller">
+                        <h1 id='tit-nav'>Do It <i>To-Do</i></h1>                  
+                    </a>                
+                </div>                 
+            </div>
+        </nav>
+
+        <div class="tab-content">
+          <div id="tab-main" class="tab-pane fade in active show">
+              <div class='card-header'>
+                <h4>To-do List</h4>
+              </div><br>
+             <div class='input-group col-md-6' id='ad-todo-list-form'>
+                <input class='form-control' name='todo-list' type='text' placeholder='Criar To-do List' id='ad-todo-list'>
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" id='send-todo-list'> <i class='fa fa-plus'></i> Adicionar </button>
+                </div>
+             </div><br>
+              <table class='table table-bordered table-hover display' style="width:100%" id='TblMain'>
+                    <thead id='thead-tblmain'>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Situação</th>
+                            <th>Data da criação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Compras da Manhã</td>
+                            <td>Incompleta</td>
+                            <td>23/07/2018</td>
+                            <td></td>                            
+                        </tr>
+                        <tr>
+                            <td>Consertar Casa</td>
+                            <td>Incompleta</td>
+                            <td>24/07/2018</td>
+                            <td></td>                            
+                        </tr>                        
+                    </tbody>                   
+               </table>
+               <b>Legenda:</b> &nbsp&nbsp <span style="color:green;">Lista de Tarefas Completas &nbsp&nbsp</span> <span style="color:red;">&nbsp&nbsp Lista de Tarefas Incompletas</span>
+          </div>
+          <div id="tab-list" class="tab-pane fade">
+              <button class='btn btn-primary' id='btn-back'><i class='fas fa-angle-double-left'></i> Voltar</button><br>
+              <div class='row'>
+                  <div class='col-md-12'>
+                    <div class='card-header'>
+                      <h2 id='name-list'></h2><br>
+                    </div>
+                    <div>
+                      <h4><span id='count-tasks'> </span> tarefas completas</h4><Br>                     
+                    </div>
+
+                    <div class='input-group col-md-6' id='ad-form'>
+                        <input class='form-control' name='task' type='text' placeholder='Sua Tarefa' id='ad-task'>
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button" id='send-task'> <i class='fa fa-plus'></i> Adicionar </button>
+                        </div>
+                    </div><br>
+                  </div>
+                  <div class='col-md-12'>
+                    <table class='table table-bordered table-hover display'  style="width:100%" id='TblList'>
+                      <thead>
+                        <tr>
+                          <th>Tarefa</th>
+                          <th>Ação</th>                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td width='80%;'>Comprar Pão</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td width='80%;'>Comprar Carne</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <b>Legenda:</b> &nbsp&nbsp <span class='td-success'>Tarefas Completas &nbsp&nbsp</span> <span style="color:red;">&nbsp&nbsp Tarefas Incompletas</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class=''>
+            
+        </div>        
+    </div>
+    <div id='ModalEdit' class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Tarefa</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class='col-md-12'>                
+               <input class='form-control' name='task' type='text' placeholder='Sua Tarefa' id='ed-task'>
+            </div>            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id='ed-btn-salvar'>Salvar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id='ModalDelete' class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmação</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type='hidden' name='id' id='del-id'>         
+            <p>Tem certeza que dessa realmente deletar?</p>       
+        
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id='del-btn-delete'>Sim</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='alert alert-success' id='alert-success'>
+        <i class='fa fa-check'></i> <span id='message-alert'></span>
+    </div>
+
+</body>
+</html>
